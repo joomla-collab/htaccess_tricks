@@ -20,3 +20,17 @@ RewriteRule ^(.*)$ http://yourdomain.com/$1 [R=301,L]
 ```
 
 ------
+
+## Disallow access to rogue PHP files throughout the site, unless they are explicitly allowed
+By below htaccess rule, you can disallow access to unknown php files. By default 3 php files should be allowed. If you wish to allow more php files, you can add them.
+```
+RewriteCond %{REQUEST_FILENAME} (\.php)$
+# Exclude index.php of front-end
+RewriteCond %{REQUEST_FILENAME} !(/path/to/joomla/root/folder/index.php)$
+# Exclude index.php of back-end (administrator)
+RewriteCond %{REQUEST_FILENAME} !(/path/to/joomla/root/folder/administrator/index.php)$
+# below file is need to be excluded for updating joomla
+RewriteCond %{REQUEST_FILENAME} !(/path/to/joomla/root/folder/administrator/components/com_joomlaupdate/restore.php)$
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule (.*\.php)$ - [F]
+```
