@@ -22,7 +22,7 @@ RewriteRule ^(.*)$ http://yourdomain.com/$1 [R=301,L]
 ------
 
 ## Disallow access to rogue PHP files throughout the site, unless they are explicitly allowed
-By below htaccess rule, you can disallow access to unknown php files. By default 3 php files should be allowed. If you wish to allow more php files, you can add them.
+The below htaccess rule, allows you to disallow access of unknown php files. By default 3 php files should be allowed in Joomla! If you wish to allow more php files, you can add them.
 ```
 RewriteCond %{REQUEST_FILENAME} (\.php)$
 # Exclude index.php of front-end
